@@ -60,9 +60,11 @@ export default function AddTodo({onAddTodo, todos}) {
     setOpen(false);
   };
 
-  // const [value, setValue] = React.useState('female');
+  const [statut, setStatut] = React.useState('todo');
 
   // const handleChange = (event) => {
+  //   console.log('RAdio BUtton :::::::::::::::::::::::::::::::::');
+  //   console.log({event});
   //   setValue(event.target.value);
   // };
 
@@ -75,7 +77,7 @@ export default function AddTodo({onAddTodo, todos}) {
     id: index >= 0 ? todos[index].id : 0,
     title: '',
     description: '',
-    // statut: '',
+    statut: '',
   });
 
   console.log({inputs})
@@ -88,7 +90,7 @@ export default function AddTodo({onAddTodo, todos}) {
     const title = inputs.title;
     console.log(title);
     const description = inputs.description;
-    onAddTodo({ id, title, description});
+    onAddTodo({ id, title, description, statut});
     setInputs({
       id : id,
       title: '',
@@ -101,8 +103,10 @@ export default function AddTodo({onAddTodo, todos}) {
   const handleInputChange = event => {
     event.persist();
     console.log(event);
+    console.log({event});
     console.log(event.target.name);
     console.log(event.target.value);
+    setStatut(event.target.value);
     const newInput = {
       ...inputs,
       [event.target.name]: event.target.value,
@@ -133,16 +137,16 @@ export default function AddTodo({onAddTodo, todos}) {
               value={inputs.description} 
               label="Description" 
             />
-            {/* <RadioGroup 
+            <RadioGroup 
               className={classes.radioContainer} 
               aria-label="statut" 
               name="statut" 
-              value="" 
+              value={statut} 
               onChange={handleInputChange}>
                 <FormControlLabel 
                   // onChange={handleInputChange}
-                  value={todo} 
-                  name="todo"
+                  value="todo"
+                  name="statut"
                   control={<Radio />} 
                   label="To Do" 
                 />
@@ -150,8 +154,8 @@ export default function AddTodo({onAddTodo, todos}) {
                   // onChange={handleInputChange}
                   // value={input.statut} 
                   // name="status"
-                  value={inprogress} 
-                  name="inprogress"
+                  value="inprogress"
+                  name="statut"
                   control={<Radio />} 
                   label="In Progress" 
                 />
@@ -159,12 +163,12 @@ export default function AddTodo({onAddTodo, todos}) {
                   // onChange={handleInputChange}
                   // value={inputs.statut} 
                   // name="status"
-                  value={done} 
-                  name="done"
+                  value="done"
+                  name="statut"
                   control={<Radio />} 
                   label="Done"
                 />
-            </RadioGroup> */}
+            </RadioGroup>
             <Button variant="contained" color="primary">
                 Cancel
             </Button>

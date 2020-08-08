@@ -21,9 +21,9 @@ const Table = () => {
     const classes = useStyles();
 
     const [todos, setTodos] = useState([
-        { id: 1, title: "Woman Pearcoat", description: "Lorem ipsum dolor sit amet", status: "todo"},
-        { id: 2, title: "Woman Pearcoat", description: "Lorem ipsum dolor sit amet", status: "inprogress"},
-        { id: 3, title: "Woman Pearcoat", description: "Lorem ipsum dolor sit amet", status: "done"},
+        { id: 1, title: "Woman Pearcoat", description: "Lorem ipsum dolor sit amet", statut: "todo"},
+        { id: 2, title: "Woman Pearcoat", description: "Lorem ipsum dolor sit amet", statut: "inprogress"},
+        { id: 3, title: "Woman Pearcoat", description: "Lorem ipsum dolor sit amet", statut: "done"},
     ])
 
     const handleAdd = todo => {
@@ -83,7 +83,7 @@ const Table = () => {
                         <td>{todo.id}</td>
                         <td>{todo.title}</td>
                         <td>{todo.description}</td>
-                        <td>{todo.status}</td>
+                        <td>{todo.statut}</td>
                         <td>
                             <IconButton 
                                 className={classes.iconButton} 

@@ -13,8 +13,8 @@ body{
 }
 
 .sidebar > div {
-  height: 70px;
   width: 100%;
+  padding: 22px 20px;
   background-color: #0000001A;
   box-shadow: 0px 2px 3px #0000000D;
   text-align: left;
