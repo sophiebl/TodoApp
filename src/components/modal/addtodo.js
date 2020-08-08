@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {makeStyles, withStyles } from '@material-ui/core';
+import {makeStyles} from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -7,10 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
 function getModalStyle() {
   return {
@@ -50,7 +46,6 @@ export default function AddTodo({onAddTodo, todos}) {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
-    console.log(todos)
 
   const handleOpen = () => {
     setOpen(true);
@@ -62,16 +57,7 @@ export default function AddTodo({onAddTodo, todos}) {
 
   const [statut, setStatut] = React.useState('todo');
 
-  // const handleChange = (event) => {
-  //   console.log('RAdio BUtton :::::::::::::::::::::::::::::::::');
-  //   console.log({event});
-  //   setValue(event.target.value);
-  // };
-
-  console.log({todos});
-  console.log(todos.length);
   const index = todos.length - 1;
-  console.log(index);
 
   const [inputs, setInputs] = useState({
     id: index >= 0 ? todos[index].id : 0,
@@ -80,15 +66,10 @@ export default function AddTodo({onAddTodo, todos}) {
     statut: '',
   });
 
-  console.log({inputs})
-  
   const handleSubmit = event => {
-    console.log()
     event.preventDefault();
-    console.log(inputs.id);
     const id = inputs.id + 1;
     const title = inputs.title;
-    console.log(title);
     const description = inputs.description;
     onAddTodo({ id, title, description, statut});
     setInputs({
@@ -97,21 +78,15 @@ export default function AddTodo({onAddTodo, todos}) {
       description: '',
       statut: '',
     });
-    // handleClose();
   };
 
   const handleInputChange = event => {
     event.persist();
-    console.log(event);
-    console.log({event});
-    console.log(event.target.name);
-    console.log(event.target.value);
     setStatut(event.target.value);
     const newInput = {
       ...inputs,
       [event.target.name]: event.target.value,
     };
-    console.log({newInput});
     setInputs(newInput);
   };
 
@@ -144,25 +119,18 @@ export default function AddTodo({onAddTodo, todos}) {
               value={statut} 
               onChange={handleInputChange}>
                 <FormControlLabel 
-                  // onChange={handleInputChange}
                   value="todo"
                   name="statut"
                   control={<Radio />} 
                   label="To Do" 
                 />
                 <FormControlLabel 
-                  // onChange={handleInputChange}
-                  // value={input.statut} 
-                  // name="status"
                   value="inprogress"
                   name="statut"
                   control={<Radio />} 
                   label="In Progress" 
                 />
                 <FormControlLabel 
-                  // onChange={handleInputChange}
-                  // value={inputs.statut} 
-                  // name="status"
                   value="done"
                   name="statut"
                   control={<Radio />} 
@@ -185,11 +153,7 @@ export default function AddTodo({onAddTodo, todos}) {
 
   return (
     <div>
-      {/* <div className="button-modal-container"> */}
-        {/* <button type="button" className="hidden-button" onClick={handleOpen}> */}
-          <AddIcon onClick={handleOpen}/>
-        {/* </button> */}
-     {/* </div> */}
+      <AddIcon onClick={handleOpen}/>
       <Modal
         open={open}
         onClose={handleClose}
@@ -201,4 +165,3 @@ export default function AddTodo({onAddTodo, todos}) {
     </div>
   );
 }
-
