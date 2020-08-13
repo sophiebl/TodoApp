@@ -1,4 +1,4 @@
-# Matcha
+# ToDo App
 ## The project
 
 Todo App.
